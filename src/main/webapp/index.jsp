@@ -44,7 +44,7 @@ if(!products.isEmpty()){
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 		   	<div class="mt-3 d-flex justify-content-between"> 
 			<a href="add-to-cart?id=<%=p.getId() %>" class="btn btn-dark">Add to Cart</a>  
-		 	<a href="#" class="btn btn-primary" >Buy Now</a> 
+		 	<a href="order-now?quantity=1&id=<%=p.getId() %>" class="btn btn-primary" >Buy Now</a> 
 		</div>
 		</div>
 		</div>

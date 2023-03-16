@@ -23,7 +23,7 @@ if(cart_list !=null){
 <body>
 <%@include file="includes/navbar.jsp" %>
 
-<h1>Hello World</h1>
+<h1>Hello From Orders</h1>
 <%@include file="includes/footer.jsp" %>
 
 </body>

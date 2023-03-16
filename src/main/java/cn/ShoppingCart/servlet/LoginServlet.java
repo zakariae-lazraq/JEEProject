@@ -27,16 +27,19 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
+		
 		try(PrintWriter out =response.getWriter()){
 			String email=request.getParameter("login-email");
 			String password=request.getParameter("login-password");
-			
+//			System.out.println(email+" "+password);
 			
 			try {
+				
 				UserDao udao= new UserDao(DbCon.getConnection());
 				User user=udao.userLogin(email, password);
+				System.out.println("inside mychecker"+user);
 				if(user !=null) {
-//					out.print("User Login Successfuly");
+					System.out.println("User Login Successfuly");
 					request.getSession().setAttribute("auth", user);
 					response.sendRedirect("index.jsp");
 				}else {
