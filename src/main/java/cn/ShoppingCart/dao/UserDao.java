@@ -43,16 +43,20 @@ public class UserDao {
 	
 	public boolean addUser(User user) {
         boolean success = false;
-        PreparedStatement stmt = null;
         try {
-            String sql = "INSERT INTO users (name, email, adresse, telephone, password) VALUES (?, ?, ?, ?, ?)";
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, user.getName());
-            stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getAdresse());
-            stmt.setString(4, user.getPhone());
-            stmt.setString(5, user.getPassword());
-            int rows = stmt.executeUpdate();
+            String sql = "INSERT INTO users (name, email,password, adresse, telephone, role) VALUES ( ? , ? , ? , ? , ? , ? )";
+            pst = con.prepareStatement(sql);
+            pst.setString(1, user.getName());
+            pst.setString(2, user.getEmail());
+            pst.setString(3, user.getPassword());
+            pst.setString(4, user.getAdresse());
+            pst.setString(5, user.getPhone());
+            pst.setString(6, user.getRole());
+            
+            System.out.print("add User : "+user.toString());
+            
+            int rows = pst.executeUpdate();
+            
             if (rows > 0) {
                 success = true;
             }
@@ -60,8 +64,8 @@ public class UserDao {
             e.printStackTrace();
         } finally {
             try {
-                if (stmt != null) {
-                    stmt.close();
+                if (pst != null) {
+                	pst.close();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -69,7 +73,38 @@ public class UserDao {
         }
         return success;
     }
-	
+//	public boolean addElement(User user) {
+//		// TODO Auto-generated method stub
+//		try {
+//			PreparedStatement ps=con.prepareStatement("insert into clients values(?,?,?,?,?)");
+//			ps.setString(1, user.getName());
+//			ps.setString(2, user.getEmail());
+//			ps.setString(3, user.getPassword());
+//			ps.setString(4, user.getAdresse());
+//			ps.setString(5, user.getPhone());
+//			ps.setString(6, user.getRole());
+//			
+//			ps.executeUpdate();
+//			
+//			con.commit();
+//			System.out.println("client added");
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			try {
+//				con.rollback();
+//			}catch(SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//		}finally {
+//			try {
+//				con.rollback();
+//			}catch(SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 
 	
 

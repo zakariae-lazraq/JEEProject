@@ -50,12 +50,12 @@ public class RegisterServlet extends HttpServlet {
 			String phone=request.getParameter("phone");
 			String password=request.getParameter("password");
 			
-//			System.out.print(name+email+adresse+phone+password);
 			
-			User u=new User(name,email,adresse,phone,password, "user");
+			User u=new User(name,email,adresse,phone,password,"user");
 //			
 			UserDao ud=new UserDao(DbCon.getConnection());
 			boolean r=ud.addUser(u);
+			
 			if(r) {response.sendRedirect("login.jsp");}
 			else {
 				out.println("User Registrartion Failed");
