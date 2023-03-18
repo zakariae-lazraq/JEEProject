@@ -23,12 +23,26 @@ if(cart_list !=null){
 <head>
 <title>Welcome To Shopping Cart</title>
 <%@include file="includes/head.jsp" %>
+<style>
+
+/* .bg-image { */
+/*   background-image: url("product-image/bg2.jpg"); */
+/*   background-size: cover; */
+/*   background-position: center; */
+/*   background-repeat: no-repeat; */
+/* } */
+/* .bg-image .inBetween{ */
+/*   backdrop-filter: blur(2px); */
+/* } */
+
+</style>
 </head>
 <body> 
 <%@include file="includes/navbar.jsp" %>
-
+<div class="bg-image">
+<div class="inBetween">
 <div class="container">
-<div class="card-header my-3">All Products</div>
+<div class="card-header my-3">All Books</div>
 <div class="row">
 <%
 if(!products.isEmpty()){
@@ -59,9 +73,10 @@ if(!products.isEmpty()){
 
 </div>
 </div>
-
+</div>
 
 
 <%@include file="includes/footer.jsp" %>
+</div>
 </body>
 </html>
