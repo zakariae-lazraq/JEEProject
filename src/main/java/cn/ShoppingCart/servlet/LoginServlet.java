@@ -38,7 +38,9 @@ public class LoginServlet extends HttpServlet {
 				
 				UserDao udao= new UserDao(DbCon.getConnection());
 				User user=udao.userLogin(email, password);
+				
 				System.out.println("inside mychecker"+user);
+				
 				if(user !=null) {
 					System.out.println("User Login Successfuly");
 					request.getSession().setAttribute("auth", user);

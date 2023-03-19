@@ -112,4 +112,24 @@ public class OrderDao {
         return list;
     }
 	
+
+    
+    public int getTotalOrders() {
+        int total = 0;
+        try {
+            
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) as total_orders FROM orders");
+            if (rs.next()) {
+                total = rs.getInt("total_orders");
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+	
 }
